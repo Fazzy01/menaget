@@ -6,11 +6,11 @@
   "scripts": {
     "start": "ts-node src/server.ts",
     "start-dev": "nodemon src/server.ts",
-    "build": "tsc && cp -r src/db/migrations dist/db/migrations",
+    "build": "tsc && cp -r src/db dist/ && cp src/knexfile.ts dist/",
     "buildCommand": "npm install --omit=dev && npm run build && npm run migrate",
     "serve": "node dist/server.js",
     "migrate:make": "knex --knexfile src/knexfile.ts migrate:make",
-    "migrate": "knex --knexfile dist/knexfile.ts migrate:latest",
+    "migrate": "cd dist && knex --knexfile knexfile.js migrate:latest",
     "migrate:local": "knex --knexfile src/knexfile.ts migrate:latest",
     "migrate:rollback": "knex --knexfile src/knexfile.ts migrate:rollback",
     "seed:make": "knex --knexfile src/knexfile.ts seed:make",
