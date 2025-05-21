@@ -1,5 +1,6 @@
 import type { Knex } from 'knex';
 import { config } from 'dotenv';
+import path from 'path';
 
 config();
 
@@ -48,8 +49,9 @@ const knexConfig: { [key: string]: Knex.Config } = {
       max: 10,
     },
     migrations: {
-      directory: './src/db/migrations',
-      extension: 'ts',
+        directory: path.resolve(__dirname, 'db/migrations'), // Correct path
+        tableName: 'knex_migrations',
+        extension: 'ts'
     },
   },
 };
