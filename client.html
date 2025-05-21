@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Updates Test</title>
+    <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
+</head>
+<body>
+
+    <script>
+        const ably = new Ably.Realtime({ key: '4LyQhQ.KxFTfw:JTyHRzc9vuv--g9jqXUknHZ5Bm07qOcaZSklVaE90ts' });
+        const channel = ably.channels.get('task-updates');
+
+        channel.subscribe('task-event', (message) => {
+          console.log('Received task update:', message.data);
+          document.body.innerHTML += `<pre>${JSON.stringify(message.data, null, 2)}</pre>`;
+        });
+
+        console.log('Listening for task updates...');
+      </script>
+</body>
+</html>
