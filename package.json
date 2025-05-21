@@ -7,7 +7,7 @@
     "start": "ts-node src/server.ts",
     "start-dev": "nodemon src/server.ts",
     "build": "tsc && cp -r src/db dist/ && cp src/knexfile.ts dist/",
-    "buildCommand": "npm install --omit=dev && npm run build && npm run migrate",
+    "buildCommand": "npm install --omit=dev && npm run build ",
     "serve": "node dist/server.js",
     "migrate:make": "knex --knexfile src/knexfile.ts migrate:make",
     "migrate": "cd dist && knex --knexfile knexfile.js migrate:latest",
