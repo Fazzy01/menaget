@@ -29,7 +29,7 @@ A RESTful API for managing tasks with real-time updates using Ably.
 2. Install dependencies: `npm install`
 3. Create a PostgreSQL database
 4. Copy `.env.example` to `.env` and update the values
-5. Run migrations: `npm run migrate`
+5. Run migrations: `npm run migrate:local` for local deployment or `npm run migrate` for production
 6. Seed the database: `npm run seed`
 7. Start the server: `npm start`
 
