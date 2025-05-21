@@ -2,7 +2,8 @@ import type { Knex } from 'knex';
 import { config } from 'dotenv';
 import path from 'path';
 
-config();
+// config();
+config({ path: path.join(__dirname, '../.env') });
 
 const knexConfig: { [key: string]: Knex.Config } = {
   development: {
@@ -13,7 +14,7 @@ const knexConfig: { [key: string]: Knex.Config } = {
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      ssl: { rejectUnauthorized: false },
+    //   ssl: { rejectUnauthorized: false }, //for live coonnection only
     },
     migrations: {
       directory: path.join(__dirname, 'db/migrations'),
@@ -31,18 +32,18 @@ const knexConfig: { [key: string]: Knex.Config } = {
       user: process.env.TEST_DB_USER,
       password: process.env.TEST_DB_PASSWORD,
       database: process.env.TEST_DB_NAME,
-      ssl: { rejectUnauthorized: false },
+    //   ssl: { rejectUnauthorized: false }, //for live coonnection only
     },
     migrations: {
       directory: './src/db/migrations',
-      extension: 'ts',
+    //   extension: 'ts',
     },
   },
   production: {
     client: 'pg',
     connection: {
       connectionString: process.env.DATABASE_URL,
-      ssl: { rejectUnauthorized: false },
+      ssl: { rejectUnauthorized: false }, //for live coonnection only
     },
     pool: {
       min: 2,
@@ -52,7 +53,7 @@ const knexConfig: { [key: string]: Knex.Config } = {
         directory: path.join(__dirname, 'db/migrations'),
         tableName: 'knex_migrations',
         disableTransactions: true,
-        extension: 'ts'
+        extension: 'js'
     },
   },
 };

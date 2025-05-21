@@ -34,6 +34,22 @@ export class Database {
       throw error;
     }
   }
+// async runMigrations(): Promise<void> {
+//     try {
+//       if (process.env.NODE_ENV === 'production') {
+//         // In production, use the compiled JS migrations
+//         await this.queryBuilder.migrate.latest();
+//       } else {
+//         // In development, use TS migrations directly
+//         require('ts-node/register');
+//         await this.queryBuilder.migrate.latest();
+//       }
+//       this.logger.info('Database migrations run successfully');
+//     } catch (error) {
+//       this.logger.error('Failed to run database migrations', error);
+//       throw error;
+//     }
+//   }
 
   async seedDatabase(): Promise<void> {
     try {
