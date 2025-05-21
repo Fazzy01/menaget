@@ -55,6 +55,9 @@ const knexConfig: { [key: string]: Knex.Config } = {
         disableTransactions: true,
         extension: 'js'
     },
+    seeds: {
+        directory: path.join(__dirname, 'db/seeds'),
+    },
   },
 };
 
