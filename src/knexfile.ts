@@ -51,6 +51,7 @@ const knexConfig: { [key: string]: Knex.Config } = {
     migrations: {
         directory: path.join(__dirname, 'db/migrations'),
         tableName: 'knex_migrations',
+        disableTransactions: true,
         extension: 'ts'
     },
   },
