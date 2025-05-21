@@ -49,7 +49,7 @@ const knexConfig: { [key: string]: Knex.Config } = {
       max: 10,
     },
     migrations: {
-        directory: path.join(__dirname, '../db/migrations'),
+        directory: path.join(__dirname, 'db/migrations'),
         tableName: 'knex_migrations',
         extension: 'ts'
     },
