@@ -7,7 +7,7 @@ import { Logger } from './config/logger';
 import { asValue } from 'awilix';
 
 async function bootstrap() {
-  // First create the logger instance manually
+  // create the logger instance manually
   const logger = new Logger();
 
   try {

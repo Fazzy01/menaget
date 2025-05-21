@@ -17,9 +17,9 @@ export class App {
     this.logger = container.resolve('logger');
 
     this.setupMiddlewares();
+    setupSwagger(this.app);
     this.setupRoutes();
     this.setupErrorHandlers();
-    setupSwagger(this.app);
   }
 
   private setupMiddlewares(): void {
