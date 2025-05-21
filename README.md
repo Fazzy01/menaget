@@ -31,7 +31,10 @@ A RESTful API for managing tasks with real-time updates using Ably.
 4. Copy `.env.example` to `.env` and update the values
 5. Run migrations: `npm run migrate:local` for local deployment or `npm run migrate` for production
 6. Seed the database: `npm run seed`
-7. Start the server: `npm start`
+7. Start the server: `npm start-dev`
+# For production
+Run `npm install --omit=dev && npm run build`
+Start the server: `npm run serve`
 
 ## API Documentation
 
