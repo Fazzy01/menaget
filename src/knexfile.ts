@@ -16,11 +16,11 @@ const knexConfig: { [key: string]: Knex.Config } = {
       ssl: { rejectUnauthorized: false },
     },
     migrations: {
-      directory: './src/db/migrations',
+      directory: path.join(__dirname, 'db/migrations'),
       extension: 'ts',
     },
     seeds: {
-      directory: './src/db/seeds',
+        directory: path.join(__dirname, 'db/seeds'),
     },
   },
   test: {
