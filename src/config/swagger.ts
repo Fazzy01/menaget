@@ -1,9 +1,48 @@
+// src/config/swagger.ts
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { Express } from 'express';
 import { version } from '../../package.json';
 
-const options: swaggerJSDoc.Options = {
+// Define the configuration type explicitly
+interface SwaggerConfig {
+  definition: {
+    openapi: string;
+    info: {
+      title: string;
+      version: string;
+      description: string;
+    };
+    servers: Array<{
+      url: string;
+      description: string;
+    }>;
+    components: {
+      schemas: {
+        Task: {
+          type: string;
+          properties: {
+            id: { type: string; example: number };
+            title: { type: string; example: string };
+            description: { type: string; example: string };
+            status: { type: string; enum: string[]; example: string };
+            created_at: { type: string; format: string; example: string };
+            updated_at: { type: string; format: string; example: string };
+          };
+        };
+        Error: {
+          type: string;
+          properties: {
+            message: { type: string; example: string };
+          };
+        };
+      };
+    };
+  };
+  apis: string[];
+}
+
+const options: SwaggerConfig = {
   definition: {
     openapi: '3.0.0',
     info: {
@@ -66,14 +105,9 @@ const options: swaggerJSDoc.Options = {
   apis: ['./src/routes/*.routes.ts', './src/validations/*.validation.ts'],
 };
 
-const swaggerSpec = swaggerJSDoc(options);
-
-// export function setupSwagger(app: Express): void {
-//   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-// }
 export function setupSwagger(app: any): void {
-    console.log('Setting up Swagger UI...')
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-    console.log('Swagger UI setup complete.');
-
+  const swaggerSpec = swaggerJSDoc(options);
+  console.log('Setting up Swagger UI...');
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  console.log('Swagger UI setup complete.');
 }
